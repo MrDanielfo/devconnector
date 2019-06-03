@@ -1,5 +1,6 @@
 {
-    "mongoURI" : "mongodb+srv://danielfo:corvettez6@connector-traversy-d6cwn.mongodb.net/test?retryWrites=true"
+    "mongoURI" : "mongodb+srv://danielfo:corvettez6@connector-traversy-d6cwn.mongodb.net/test?retryWrites=true",
+    "jwtSecret" : "oneinamillionalwaysyou"
 
 
 }

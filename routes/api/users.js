@@ -1,19 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const router = express.Router();
+const { check } = require('express-validator/check');
 
-// @route GET api/users
-// @desc  Test route
+const { registerUser }  = require('../../controllers/User');
+
+// @route POST api/users
+// @desc  Register
 // @access Public
 
-
-
-router.get('/', (req, res) => {
-  res.json({
-    message: 'Hola',
-    nombre: 'Josué'
-  });
-});
+router.post('/', [ check('name', 'Name is required').not().isEmpty(),
+                   check('email', 'Please include a valid email').isEmail(),
+                   check('password', 'Please enter a password with 6 or more characters').isLength({min: 6}) 
+                  ], registerUser);
 
 
 module.exports = router; 
