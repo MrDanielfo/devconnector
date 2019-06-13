@@ -1,6 +1,7 @@
 {
     "mongoURI" : "mongodb+srv://danielfo:corvettez6@connector-traversy-d6cwn.mongodb.net/test?retryWrites=true",
-    "jwtSecret" : "oneinamillionalwaysyou"
-
+    "jwtSecret" : "oneinamillionalwaysyou",
+    "githubClientId" : "2fe4e9fa4f2a46149552",
+    "githubSecret" : "693287fc0a08f4d7f7297af8d420ad4794da82ab"
 
 }

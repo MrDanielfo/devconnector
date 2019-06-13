@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const { validationResult } = require('express-validator/check');
 
+const request = require('request');
+const config = require('config');
+const githubClientId = config.get('githubClientId');
+const githubSecret = config.get('githubSecret');
+
 require('../models/Profile');
 const Profile = mongoose.model('Profile'); 
 
@@ -287,6 +292,37 @@ const deleteUserEducation = async (req, res) => {
 
 }
 
+const githubProfile = async (req, res) => {
+
+    try {
+
+        const options = await {
+            uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${githubClientId}&client_secret=${githubSecret}`,
+            method: 'GET',
+            headers: { 'user-agent' : 'node.js' }
+        }
+
+        request(options, (err, response, body) => {
+
+            if(err) console.log(err);
+
+            if(response.statusCode !== 200) {
+
+                return res.status(400).json({msg : 'No Github profile found'})
+
+            }
+
+            res.json(JSON.parse(body));
+        })
+        
+
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server Error');
+    }
+
+}
+
 module.exports = {
     userProfile,
     createProfile,
@@ -296,6 +332,7 @@ module.exports = {
     userExperience,
     deleteUserExperience,
     userEducation,
-    deleteUserEducation
+    deleteUserEducation,
+    githubProfile
 }
 

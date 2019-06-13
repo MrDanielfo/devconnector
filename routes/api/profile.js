@@ -13,7 +13,8 @@ const {
         userExperience, 
         deleteUserExperience,
         userEducation,
-        deleteUserEducation
+        deleteUserEducation,
+        githubProfile
 
   } = require('../../controllers/Profile');
 
@@ -85,5 +86,13 @@ router.put('/education', [auth, [
 // @access Private
 
 router.delete('/education/:edu_id', auth, deleteUserEducation);
+
+// @route GET api/profile/github/:username
+// @desc  GET Github Profile
+// @access Public
+
+router.get('/github/:username', githubProfile);
+
+
 
 module.exports = router;
