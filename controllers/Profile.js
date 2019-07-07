@@ -12,6 +12,9 @@ const Profile = mongoose.model('Profile');
 require('../models/User');
 const User = mongoose.model('User'); 
 
+require('../models/Post');
+const Post = mongoose.model('Post'); 
+
 
 const userProfile = async (req, res) => {
 
@@ -144,7 +147,9 @@ const userIdProfile = async (req, res) => {
 const deleteProfile = async (req, res) => {
 
     try {
-        // Pendiente - remover user posts
+        
+
+        await Post.deleteMany({user: req.user.id })
         // Remove profile
         await Profile.findOneAndRemove({ user: req.user.id })
         // Remove User

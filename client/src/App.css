@@ -126,6 +126,10 @@ img {
   margin: 3rem 0;
 }
 
+.my-4 {
+  margin: 3.5rem 0;
+}
+
 .btn {
   display: inline-block;
   background: var(--light-color);
