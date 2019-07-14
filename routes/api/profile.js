@@ -19,7 +19,7 @@ const {
   } = require('../../controllers/Profile');
 
 // @route GET api/profile/me
-// @desc  Get current users profile
+// @desc  Get current user profile
 // @access Private
 
 router.get('/me', auth, userProfile);

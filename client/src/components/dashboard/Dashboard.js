@@ -14,7 +14,7 @@ import DeleteAccount from '../profile-form/DeleteAccount';
 const Dashboard = ({getCurrentProfile, auth: { user }, profile: {profile, loading }, deleteAccount }) => {
     useEffect(() => {
         getCurrentProfile()
-    }, []);
+    }, [getCurrentProfile]);
 
     return loading && profile === null ? (
       <Spinner />

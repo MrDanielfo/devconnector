@@ -47,7 +47,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
             instagram: loading || !profile.instagram ? '' : profile.instagram
         })
 
-    }, [loading]);
+    }, [loading, getCurrentProfile, profile]);
 
     const sendData = (e) => {
         e.preventDefault();
